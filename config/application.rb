@@ -22,3 +22,11 @@ module LandingPage
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+# Hack for CentOS 7 (SQLite 3.7.17 < 3.8)
+ActiveSupport.on_load(:active_record) do
+  require 'active_record/connection_adapters/sqlite3_adapter'
+  class ActiveRecord::ConnectionAdapters::SQLite3Adapter
+    def check_version(connection); end
+  end
+end
