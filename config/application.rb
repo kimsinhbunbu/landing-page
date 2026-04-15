@@ -27,6 +27,6 @@ end
 ActiveSupport.on_load(:active_record) do
   require 'active_record/connection_adapters/sqlite3_adapter'
   class ActiveRecord::ConnectionAdapters::SQLite3Adapter
-    def check_version(connection); end
+    def check_version(*args); end
   end
 end
